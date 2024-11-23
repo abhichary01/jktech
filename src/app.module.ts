@@ -12,9 +12,13 @@ import { AuthService } from './auth/auth.service';
 import { AuthController } from './auth/auth.controller';
 import { JwtService } from '@nestjs/jwt';
 import { DocumentModule } from './document/document.module';
+import { IngestionService } from './ingestion/ingestion.service';
+import { IngestionController } from './ingestion/ingestion.controller';
+import { HttpModule } from '@nestjs/axios';
 
 @Module({
   imports: [
+    HttpModule,
     ConfigModule.forRoot({
       isGlobal: true, // Makes the config service globally available
       envFilePath: '.env', // Path to your .env file
@@ -24,7 +28,12 @@ import { DocumentModule } from './document/document.module';
     UserModule,
     DocumentModule,
   ],
-  controllers: [AppController, UserController, AuthController],
+  controllers: [
+    AppController,
+    UserController,
+    AuthController,
+    IngestionController,
+  ],
   providers: [
     AppService,
     JwtService,
@@ -41,6 +50,7 @@ import { DocumentModule } from './document/document.module';
       },
       inject: [ConfigService],
     },
+    IngestionService,
   ],
 })
 export class AppModule {}
