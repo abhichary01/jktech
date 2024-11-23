@@ -1,0 +1,14 @@
+{
+  "ingestions": [
+    {
+      "jobId": "abc123",
+      "status": "processing",
+      "progress": "50%",
+      "id": "cca8"
+    },
+    {
+      "id": "95f3",
+      "someKey": "someValue"
+    }
+  ]
+}
