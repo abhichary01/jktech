@@ -1,13 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import * as AWS from 'aws-sdk';
-// import * as multer from 'multer';
-// import * as multerS3 from 'multer-s3';
 import { ConfigService } from '@nestjs/config';
 import { BadRequestException } from '@nestjs/common';
 
 // S3 configuration
 AWS.config.update({
-  region: 'us-east-1', // Change region as needed
+  region: 'ap-south-1', // Change region as needed
 });
 
 const s3 = new AWS.S3();
