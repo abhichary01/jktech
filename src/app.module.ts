@@ -11,6 +11,7 @@ import { AuthModule } from './auth/auth.module';
 import { AuthService } from './auth/auth.service';
 import { AuthController } from './auth/auth.controller';
 import { JwtService } from '@nestjs/jwt';
+import { DocumentModule } from './document/document.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { JwtService } from '@nestjs/jwt';
     }),
     AuthModule,
     UserModule,
+    DocumentModule,
   ],
   controllers: [AppController, UserController, AuthController],
   providers: [
