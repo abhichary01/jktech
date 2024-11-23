@@ -1,7 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import * as AWS from 'aws-sdk';
-import * as multer from 'multer';
-import * as multerS3 from 'multer-s3';
 import { ConfigService } from '@nestjs/config';
 import { BadRequestException } from '@nestjs/common';
 
