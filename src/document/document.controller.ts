@@ -6,10 +6,15 @@ import {
   Param,
   UploadedFile,
   UseInterceptors,
+  UseGuards,
 } from '@nestjs/common';
 import { DocumentService } from './document.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { BadRequestException } from '@nestjs/common';
+import { Roles } from '../auth/roles.decorator';
+import { JwtAuthGuard } from '../auth/jwt.authguard';
+import { RolesGuard } from '../auth/roles.guard';
+import { UserRole } from '../user/user.dto';
 
 @Controller('documents')
 export class DocumentController {
@@ -17,6 +22,8 @@ export class DocumentController {
 
   // Upload a file
   @Post('upload')
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN, UserRole.EDITOR)
   @UseInterceptors(FileInterceptor('file'))
   async uploadFile(@UploadedFile() file: Express.Multer.File) {
     if (!file) {
@@ -32,6 +39,8 @@ export class DocumentController {
   }
 
   // Delete a document by name
+  @UseGuards(JwtAuthGuard, RolesGuard)
+  @Roles(UserRole.ADMIN, UserRole.EDITOR)
   @Delete(':fileName')
   async deleteFile(@Param('fileName') fileName: string) {
     await this.documentService.deleteDocument(fileName);
