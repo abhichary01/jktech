@@ -24,7 +24,12 @@ export class RolesGuard extends JwtAuthGuard implements CanActivate {
     const request = context.switchToHttp().getRequest();
     const user = request.user;
 
-    if (!user || !user.role) {
+    if (
+      !user ||
+      !user.role ||
+      user.role !== 'admin' ||
+      user.role !== 'editor'
+    ) {
       throw new ForbiddenException('No roles found on the user');
     }
 
