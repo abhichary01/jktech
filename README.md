@@ -42,3 +42,15 @@ json-server --watch db.json --port 3001
 curl -X POST http://localhost:3000/ingestion/trigger \
      -H "Content-Type: application/json" \
      -d '{"someKey": "someValue"}'
+
+http://localhost:3000/api for swagger yaml api documentation
+
+More improvents needs to be done
+
+Caching 
+
+Terraform automating resources
+
+Better CI/CD
+
+E2E testing
