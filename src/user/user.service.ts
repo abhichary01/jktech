@@ -6,8 +6,8 @@ import * as AWS from 'aws-sdk'; // DynamoDB setup
 
 @Injectable()
 export class UserService {
-  private readonly tableName = process.env.DYNAMODB_TABLE;
-  private readonly dynamoDBClient = new AWS.DynamoDB.DocumentClient();
+  private tableName = process.env.DYNAMODB_TABLE;
+  private dynamoDBClient = new AWS.DynamoDB.DocumentClient();
 
   async createUser(createUserDto: CreateUserDto): Promise<Partial<User>> {
     const params = {
